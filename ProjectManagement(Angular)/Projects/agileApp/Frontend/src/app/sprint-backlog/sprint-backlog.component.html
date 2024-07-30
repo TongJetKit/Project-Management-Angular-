@@ -1,0 +1,43 @@
+<div class="sprint-wrapper" *ngFor="let sprint of sprintList">
+    <mat-accordion>
+        <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            TEST_SPRINT
+            </mat-panel-title>
+            <mat-panel-description>
+            SPRINT_DESC
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-sprint [sprint_id]="3"></app-sprint>
+        </mat-expansion-panel> -->
+
+        <mat-expansion-panel [expanded]="sprint.sprint_status == 'Active'">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{sprint.sprint_name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <button class="tag-btn" mat-flat-button
+                        [disabled]="sprint.sprint_status == 'Inactive'"
+                        [color]="sprint.sprint_status == 'Completed' ? 'primary' : 'warn'"
+                        [disableRipple]="true">{{sprint.sprint_status}}</button>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-sprint [sprint_id]="sprint.sprint_id"></app-sprint>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+<!-- button -->
+<div>
+    <br><br>
+    <a class="h-button centered" data-before="+" (click)="openDialog('0ms', '0ms')">
+        <span>new sprint</span>
+    </a>
+</div>
+
+<div style="height: 150px"></div>
+
+<div class="spacer"></div>
